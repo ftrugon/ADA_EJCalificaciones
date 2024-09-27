@@ -66,25 +66,20 @@ de teoría en la nota final es de un 30% mientras que el peso del examen de prá
             val pr = mapOfThings["Practicas"]?.replace(",",".")?.toFloatOrNull() ?: 0f
             val opr = mapOfThings["OrdinarioPracticas"]?.replace(",",".")?.toFloatOrNull() ?: 0f
 
-            notaFinal += if (p1 > o1){
-                p1 * 0.3f
-            }else o1 * 0.3f
+            notaFinal += if (p1 > o1) multiply(p1,0.3f) else multiply(o1,0.3f)
 
-            notaFinal += if (p2 > o2){
-                p2 * 0.3f
-            }else o2 * 0.3f
+            notaFinal += if (p2 > o2) multiply(p2,0.3f) else multiply(o2,0.3f)
 
-            notaFinal += if (pr > opr){
-                pr * 0.4f
-            }else opr * 0.4f
+            notaFinal += if (pr > opr) multiply(pr,0.4f) else multiply(opr,0.4f)
 
             mapOfThings["NotaFinal"] = String.format("%.2f", notaFinal)
 
         }
-
-
     }
 
+    fun multiply(numToMul: Float,noteCount: Float): Float{
+        return numToMul * noteCount
+    }
 
 /*
 Una función que reciba una lista de diccionarios como la que devuelve la función anterior y
